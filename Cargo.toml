@@ -1,0 +1,17 @@
+[package]
+name = "samd20j18"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/wallisch/samd20j18"
+keywords = ["embedded", "svd2rust", "samd20", "samd20j18"]
+description =  "Device support crate for samd20j18 devices"
+
+[dependencies]
+critical-section = { version = "1.0", optional = true }
+cortex-m = "0.7.6"
+cortex-m-rt = { version = "0.6.13", optional = true }
+vcell = "0.1.2"
+
+[features]
+rt = ["cortex-m-rt/device"]
+
