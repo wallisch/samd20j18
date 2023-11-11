@@ -14,4 +14,3 @@ vcell = "0.1.2"
 
 [features]
 rt = ["cortex-m-rt/device"]
-
