@@ -1,0 +1,16 @@
+diff --git a/src/port.rs b/src/port.rs
+index f5bb8de..1ed54ad 100644
+--- a/src/port.rs
++++ b/src/port.rs
+@@ -53,9 +53,9 @@ pub struct RegisterBlock {
+     pub wrconfig1: WRCONFIG,
+     _reserved24: [u8; 0x04],
+     #[doc = "0xb0..0xc0 - Peripheral Multiplexing n - Group 1"]
+-    pub pmux1_0: [PMUX1_0; 16],
++    pub pmux1_: [PMUX1_; 16],
+     #[doc = "0xc0..0xe0 - Pin Configuration n - Group 1"]
+-    pub pincfg1_0: [PINCFG1_0; 32],
++    pub pincfg1_: [PINCFG1_; 32],
+ }
+ #[doc = "DIR (rw) register accessor: Data Direction\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`dir::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`dir::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dir`]
+ module"]
