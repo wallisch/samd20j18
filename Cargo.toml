@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 repository = "https://github.com/wallisch/samd20j18"
 keywords = ["embedded", "svd2rust", "samd20", "samd20j18"]
-description =  "Device support crate for samd20j18 devices"
+description =  "Peripheral access API for SAMD20J18 microcontrollers"
 
 [dependencies]
 critical-section = { version = "1.0", optional = true }

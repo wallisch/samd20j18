@@ -9,18 +9,18 @@ pub struct RegisterBlock {
     pub intflag: INTFLAG,
     #[doc = "0x0c - Power and Clocks Status"]
     pub pclksr: PCLKSR,
-    #[doc = "0x10 - XOSC Control"]
+    #[doc = "0x10 - External Multipurpose Crystal Oscillator (XOSC) Control"]
     pub xosc: XOSC,
     _reserved5: [u8; 0x02],
-    #[doc = "0x14 - XOSC32K Control"]
+    #[doc = "0x14 - 32kHz External Crystal Oscillator (XOSC32K) Control"]
     pub xosc32k: XOSC32K,
     _reserved6: [u8; 0x02],
-    #[doc = "0x18 - OSC32K Control"]
+    #[doc = "0x18 - 32kHz Internal Oscillator (OSC32K) Control"]
     pub osc32k: OSC32K,
     #[doc = "0x1c - OSCULP32K Control"]
     pub osculp32k: OSCULP32K,
     _reserved8: [u8; 0x03],
-    #[doc = "0x20 - OSC8M Control A"]
+    #[doc = "0x20 - 8MHz Internal Oscillator (OSC8M) Control"]
     pub osc8m: OSC8M,
     #[doc = "0x24 - DFLL Config"]
     pub dfllctrl: DFLLCTRL,
@@ -61,30 +61,30 @@ module"]
 pub type PCLKSR = crate::Reg<pclksr::PCLKSR_SPEC>;
 #[doc = "Power and Clocks Status"]
 pub mod pclksr;
-#[doc = "XOSC (rw) register accessor: XOSC Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`xosc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`xosc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@xosc`]
+#[doc = "XOSC (rw) register accessor: External Multipurpose Crystal Oscillator (XOSC) Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`xosc::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`xosc::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@xosc`]
 module"]
 pub type XOSC = crate::Reg<xosc::XOSC_SPEC>;
-#[doc = "XOSC Control"]
+#[doc = "External Multipurpose Crystal Oscillator (XOSC) Control"]
 pub mod xosc;
-#[doc = "XOSC32K (rw) register accessor: XOSC32K Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`xosc32k::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`xosc32k::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@xosc32k`]
+#[doc = "XOSC32K (rw) register accessor: 32kHz External Crystal Oscillator (XOSC32K) Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`xosc32k::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`xosc32k::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@xosc32k`]
 module"]
 pub type XOSC32K = crate::Reg<xosc32k::XOSC32K_SPEC>;
-#[doc = "XOSC32K Control"]
+#[doc = "32kHz External Crystal Oscillator (XOSC32K) Control"]
 pub mod xosc32k;
-#[doc = "OSC32K (rw) register accessor: OSC32K Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`osc32k::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`osc32k::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@osc32k`]
+#[doc = "OSC32K (rw) register accessor: 32kHz Internal Oscillator (OSC32K) Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`osc32k::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`osc32k::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@osc32k`]
 module"]
 pub type OSC32K = crate::Reg<osc32k::OSC32K_SPEC>;
-#[doc = "OSC32K Control"]
+#[doc = "32kHz Internal Oscillator (OSC32K) Control"]
 pub mod osc32k;
 #[doc = "OSCULP32K (rw) register accessor: OSCULP32K Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`osculp32k::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`osculp32k::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@osculp32k`]
 module"]
 pub type OSCULP32K = crate::Reg<osculp32k::OSCULP32K_SPEC>;
 #[doc = "OSCULP32K Control"]
 pub mod osculp32k;
-#[doc = "OSC8M (rw) register accessor: OSC8M Control A\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`osc8m::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`osc8m::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@osc8m`]
+#[doc = "OSC8M (rw) register accessor: 8MHz Internal Oscillator (OSC8M) Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`osc8m::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`osc8m::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@osc8m`]
 module"]
 pub type OSC8M = crate::Reg<osc8m::OSC8M_SPEC>;
-#[doc = "OSC8M Control A"]
+#[doc = "8MHz Internal Oscillator (OSC8M) Control"]
 pub mod osc8m;
 #[doc = "DFLLCTRL (rw) register accessor: DFLL Config\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`dfllctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`dfllctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dfllctrl`]
 module"]

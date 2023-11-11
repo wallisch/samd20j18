@@ -1,6 +1,6 @@
-#[doc = "Register `ALARM%s` reader"]
+#[doc = "Register `ALARM` reader"]
 pub type R = crate::R<ALARM_SPEC>;
-#[doc = "Register `ALARM%s` writer"]
+#[doc = "Register `ALARM` writer"]
 pub type W = crate::W<ALARM_SPEC>;
 #[doc = "Field `SECOND` reader - Second"]
 pub type SECOND_R = crate::FieldReader;
@@ -11,9 +11,64 @@ pub type MINUTE_R = crate::FieldReader;
 #[doc = "Field `MINUTE` writer - Minute"]
 pub type MINUTE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O>;
 #[doc = "Field `HOUR` reader - Hour"]
-pub type HOUR_R = crate::FieldReader;
+pub type HOUR_R = crate::FieldReader<HOURSELECT_A>;
+#[doc = "Hour\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum HOURSELECT_A {
+    #[doc = "0: Morning hour"]
+    AM = 0,
+    #[doc = "16: Afternoon hour"]
+    PM = 16,
+}
+impl From<HOURSELECT_A> for u8 {
+    #[inline(always)]
+    fn from(variant: HOURSELECT_A) -> Self {
+        variant as _
+    }
+}
+impl crate::FieldSpec for HOURSELECT_A {
+    type Ux = u8;
+}
+impl HOUR_R {
+    #[doc = "Get enumerated values variant"]
+    #[inline(always)]
+    pub const fn variant(&self) -> Option<HOURSELECT_A> {
+        match self.bits {
+            0 => Some(HOURSELECT_A::AM),
+            16 => Some(HOURSELECT_A::PM),
+            _ => None,
+        }
+    }
+    #[doc = "Morning hour"]
+    #[inline(always)]
+    pub fn is_am(&self) -> bool {
+        *self == HOURSELECT_A::AM
+    }
+    #[doc = "Afternoon hour"]
+    #[inline(always)]
+    pub fn is_pm(&self) -> bool {
+        *self == HOURSELECT_A::PM
+    }
+}
 #[doc = "Field `HOUR` writer - Hour"]
-pub type HOUR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O>;
+pub type HOUR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 5, O, HOURSELECT_A>;
+impl<'a, REG, const O: u8> HOUR_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Morning hour"]
+    #[inline(always)]
+    pub fn am(self) -> &'a mut crate::W<REG> {
+        self.variant(HOURSELECT_A::AM)
+    }
+    #[doc = "Afternoon hour"]
+    #[inline(always)]
+    pub fn pm(self) -> &'a mut crate::W<REG> {
+        self.variant(HOURSELECT_A::PM)
+    }
+}
 #[doc = "Field `DAY` reader - Day"]
 pub type DAY_R = crate::FieldReader;
 #[doc = "Field `DAY` writer - Day"]
@@ -106,7 +161,7 @@ impl W {
         self
     }
 }
-#[doc = "MODE2 Alarm n Value\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`alarm::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`alarm::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "MODE2_ALARM Alarm n Value\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`alarm::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`alarm::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct ALARM_SPEC;
 impl crate::RegisterSpec for ALARM_SPEC {
     type Ux = u32;
@@ -118,7 +173,7 @@ impl crate::Writable for ALARM_SPEC {
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
-#[doc = "`reset()` method sets ALARM%s to value 0"]
+#[doc = "`reset()` method sets ALARM to value 0"]
 impl crate::Resettable for ALARM_SPEC {
     const RESET_VALUE: Self::Ux = 0;
 }

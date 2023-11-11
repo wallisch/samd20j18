@@ -25,7 +25,7 @@ pub struct MODE0 {
     pub count: COUNT,
     _reserved10: [u8; 0x04],
     #[doc = "0x18 - MODE0 Compare n Value"]
-    pub comp: [COMP; 1],
+    pub comp: COMP,
 }
 #[doc = "CTRL (rw) register accessor: MODE0 Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ctrl`]
 module"]

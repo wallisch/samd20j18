@@ -2,6 +2,8 @@
 pub type R = crate::R<CTRL_SPEC>;
 #[doc = "Register `CTRL` writer"]
 pub type W = crate::W<CTRL_SPEC>;
+#[doc = "Field `SWRST` reader - Software Reset"]
+pub type SWRST_R = crate::BitReader;
 #[doc = "Field `SWRST` writer - Software Reset"]
 pub type SWRST_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `ENABLE` reader - Enable"]
@@ -265,6 +267,11 @@ where
     }
 }
 impl R {
+    #[doc = "Bit 0 - Software Reset"]
+    #[inline(always)]
+    pub fn swrst(&self) -> SWRST_R {
+        SWRST_R::new((self.bits & 1) != 0)
+    }
     #[doc = "Bit 1 - Enable"]
     #[inline(always)]
     pub fn enable(&self) -> ENABLE_R {

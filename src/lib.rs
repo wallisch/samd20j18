@@ -58,6 +58,7 @@ extern "C" {
     fn ADC();
     fn AC();
     fn DAC();
+    fn PTC();
 }
 #[doc(hidden)]
 pub union Vector {
@@ -68,7 +69,7 @@ pub union Vector {
 #[doc(hidden)]
 #[link_section = ".vector_table.interrupts"]
 #[no_mangle]
-pub static __INTERRUPTS: [Vector; 24] = [
+pub static __INTERRUPTS: [Vector; 25] = [
     Vector { _handler: PM },
     Vector { _handler: SYSCTRL },
     Vector { _handler: WDT },
@@ -93,6 +94,7 @@ pub static __INTERRUPTS: [Vector; 24] = [
     Vector { _handler: ADC },
     Vector { _handler: AC },
     Vector { _handler: DAC },
+    Vector { _handler: PTC },
 ];
 #[doc = r"Enumeration of all the interrupts."]
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
@@ -146,6 +148,8 @@ pub enum Interrupt {
     AC = 22,
     #[doc = "23 - DAC"]
     DAC = 23,
+    #[doc = "24 - PTC"]
+    PTC = 24,
 }
 unsafe impl cortex_m::interrupt::InterruptNumber for Interrupt {
     #[inline(always)]
@@ -521,7 +525,7 @@ impl core::fmt::Debug for NVMCTRL {
 }
 #[doc = "Non-Volatile Memory Controller"]
 pub mod nvmctrl;
-#[doc = "Peripheral Access Controller 0"]
+#[doc = "Peripheral Access Controller"]
 pub struct PAC0 {
     _marker: PhantomData<*const ()>,
 }
@@ -565,9 +569,9 @@ impl core::fmt::Debug for PAC0 {
         f.debug_struct("PAC0").finish()
     }
 }
-#[doc = "Peripheral Access Controller 0"]
+#[doc = "Peripheral Access Controller"]
 pub mod pac0;
-#[doc = "Peripheral Access Controller 1"]
+#[doc = "Peripheral Access Controller"]
 pub struct PAC1 {
     _marker: PhantomData<*const ()>,
 }
@@ -611,9 +615,9 @@ impl core::fmt::Debug for PAC1 {
         f.debug_struct("PAC1").finish()
     }
 }
-#[doc = "Peripheral Access Controller 1"]
+#[doc = "Peripheral Access Controller"]
 pub use self::pac0 as pac1;
-#[doc = "Peripheral Access Controller 2"]
+#[doc = "Peripheral Access Controller"]
 pub struct PAC2 {
     _marker: PhantomData<*const ()>,
 }
@@ -657,7 +661,7 @@ impl core::fmt::Debug for PAC2 {
         f.debug_struct("PAC2").finish()
     }
 }
-#[doc = "Peripheral Access Controller 2"]
+#[doc = "Peripheral Access Controller"]
 pub use self::pac0 as pac2;
 #[doc = "Power Manager"]
 pub struct PM {
@@ -751,6 +755,52 @@ impl core::fmt::Debug for PORT {
 }
 #[doc = "Port Module"]
 pub mod port;
+#[doc = "Port Module"]
+pub struct PORT_IOBUS {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for PORT_IOBUS {}
+impl PORT_IOBUS {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const port::RegisterBlock = 0x6000_0000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const port::RegisterBlock {
+        Self::PTR
+    }
+    #[doc = r" Steal an instance of this peripheral"]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Ensure that the new instance of the peripheral cannot be used in a way"]
+    #[doc = r" that may race with any existing instances, for example by only"]
+    #[doc = r" accessing read-only or write-only registers, or by consuming the"]
+    #[doc = r" original peripheral and using critical sections to coordinate"]
+    #[doc = r" access between multiple new instances."]
+    #[doc = r""]
+    #[doc = r" Additionally, other software such as HALs may rely on only one"]
+    #[doc = r" peripheral instance existing to ensure memory safety; ensure"]
+    #[doc = r" no stolen instances are passed to such software."]
+    pub unsafe fn steal() -> Self {
+        Self {
+            _marker: PhantomData,
+        }
+    }
+}
+impl Deref for PORT_IOBUS {
+    type Target = port::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for PORT_IOBUS {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("PORT_IOBUS").finish()
+    }
+}
+#[doc = "Port Module"]
+pub use self::port as port_iobus;
 #[doc = "Real-Time Counter"]
 pub struct RTC {
     _marker: PhantomData<*const ()>,
@@ -797,7 +847,7 @@ impl core::fmt::Debug for RTC {
 }
 #[doc = "Real-Time Counter"]
 pub mod rtc;
-#[doc = "Serial Communication Interface 0"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM0 {
     _marker: PhantomData<*const ()>,
 }
@@ -841,9 +891,9 @@ impl core::fmt::Debug for SERCOM0 {
         f.debug_struct("SERCOM0").finish()
     }
 }
-#[doc = "Serial Communication Interface 0"]
+#[doc = "Serial Communication Interface"]
 pub mod sercom0;
-#[doc = "Serial Communication Interface 1"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM1 {
     _marker: PhantomData<*const ()>,
 }
@@ -887,9 +937,9 @@ impl core::fmt::Debug for SERCOM1 {
         f.debug_struct("SERCOM1").finish()
     }
 }
-#[doc = "Serial Communication Interface 1"]
+#[doc = "Serial Communication Interface"]
 pub use self::sercom0 as sercom1;
-#[doc = "Serial Communication Interface 2"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM2 {
     _marker: PhantomData<*const ()>,
 }
@@ -933,9 +983,9 @@ impl core::fmt::Debug for SERCOM2 {
         f.debug_struct("SERCOM2").finish()
     }
 }
-#[doc = "Serial Communication Interface 2"]
+#[doc = "Serial Communication Interface"]
 pub use self::sercom0 as sercom2;
-#[doc = "Serial Communication Interface 3"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM3 {
     _marker: PhantomData<*const ()>,
 }
@@ -979,9 +1029,9 @@ impl core::fmt::Debug for SERCOM3 {
         f.debug_struct("SERCOM3").finish()
     }
 }
-#[doc = "Serial Communication Interface 3"]
+#[doc = "Serial Communication Interface"]
 pub use self::sercom0 as sercom3;
-#[doc = "Serial Communication Interface 4"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM4 {
     _marker: PhantomData<*const ()>,
 }
@@ -1025,9 +1075,9 @@ impl core::fmt::Debug for SERCOM4 {
         f.debug_struct("SERCOM4").finish()
     }
 }
-#[doc = "Serial Communication Interface 4"]
+#[doc = "Serial Communication Interface"]
 pub use self::sercom0 as sercom4;
-#[doc = "Serial Communication Interface 5"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM5 {
     _marker: PhantomData<*const ()>,
 }
@@ -1071,7 +1121,7 @@ impl core::fmt::Debug for SERCOM5 {
         f.debug_struct("SERCOM5").finish()
     }
 }
-#[doc = "Serial Communication Interface 5"]
+#[doc = "Serial Communication Interface"]
 pub use self::sercom0 as sercom5;
 #[doc = "System Control"]
 pub struct SYSCTRL {
@@ -1119,7 +1169,7 @@ impl core::fmt::Debug for SYSCTRL {
 }
 #[doc = "System Control"]
 pub mod sysctrl;
-#[doc = "Basic Timer Counter 0"]
+#[doc = "Basic Timer Counter"]
 pub struct TC0 {
     _marker: PhantomData<*const ()>,
 }
@@ -1163,9 +1213,9 @@ impl core::fmt::Debug for TC0 {
         f.debug_struct("TC0").finish()
     }
 }
-#[doc = "Basic Timer Counter 0"]
+#[doc = "Basic Timer Counter"]
 pub mod tc0;
-#[doc = "Basic Timer Counter 1"]
+#[doc = "Basic Timer Counter"]
 pub struct TC1 {
     _marker: PhantomData<*const ()>,
 }
@@ -1209,9 +1259,9 @@ impl core::fmt::Debug for TC1 {
         f.debug_struct("TC1").finish()
     }
 }
-#[doc = "Basic Timer Counter 1"]
+#[doc = "Basic Timer Counter"]
 pub use self::tc0 as tc1;
-#[doc = "Basic Timer Counter 2"]
+#[doc = "Basic Timer Counter"]
 pub struct TC2 {
     _marker: PhantomData<*const ()>,
 }
@@ -1255,9 +1305,9 @@ impl core::fmt::Debug for TC2 {
         f.debug_struct("TC2").finish()
     }
 }
-#[doc = "Basic Timer Counter 2"]
+#[doc = "Basic Timer Counter"]
 pub use self::tc0 as tc2;
-#[doc = "Basic Timer Counter 3"]
+#[doc = "Basic Timer Counter"]
 pub struct TC3 {
     _marker: PhantomData<*const ()>,
 }
@@ -1301,9 +1351,9 @@ impl core::fmt::Debug for TC3 {
         f.debug_struct("TC3").finish()
     }
 }
-#[doc = "Basic Timer Counter 3"]
+#[doc = "Basic Timer Counter"]
 pub use self::tc0 as tc3;
-#[doc = "Basic Timer Counter 4"]
+#[doc = "Basic Timer Counter"]
 pub struct TC4 {
     _marker: PhantomData<*const ()>,
 }
@@ -1347,9 +1397,9 @@ impl core::fmt::Debug for TC4 {
         f.debug_struct("TC4").finish()
     }
 }
-#[doc = "Basic Timer Counter 4"]
+#[doc = "Basic Timer Counter"]
 pub use self::tc0 as tc4;
-#[doc = "Basic Timer Counter 5"]
+#[doc = "Basic Timer Counter"]
 pub struct TC5 {
     _marker: PhantomData<*const ()>,
 }
@@ -1393,9 +1443,9 @@ impl core::fmt::Debug for TC5 {
         f.debug_struct("TC5").finish()
     }
 }
-#[doc = "Basic Timer Counter 5"]
+#[doc = "Basic Timer Counter"]
 pub use self::tc0 as tc5;
-#[doc = "Basic Timer Counter 6"]
+#[doc = "Basic Timer Counter"]
 pub struct TC6 {
     _marker: PhantomData<*const ()>,
 }
@@ -1439,9 +1489,9 @@ impl core::fmt::Debug for TC6 {
         f.debug_struct("TC6").finish()
     }
 }
-#[doc = "Basic Timer Counter 6"]
+#[doc = "Basic Timer Counter"]
 pub use self::tc0 as tc6;
-#[doc = "Basic Timer Counter 7"]
+#[doc = "Basic Timer Counter"]
 pub struct TC7 {
     _marker: PhantomData<*const ()>,
 }
@@ -1485,7 +1535,7 @@ impl core::fmt::Debug for TC7 {
         f.debug_struct("TC7").finish()
     }
 }
-#[doc = "Basic Timer Counter 7"]
+#[doc = "Basic Timer Counter"]
 pub use self::tc0 as tc7;
 #[doc = "Watchdog Timer"]
 pub struct WDT {
@@ -1533,6 +1583,98 @@ impl core::fmt::Debug for WDT {
 }
 #[doc = "Watchdog Timer"]
 pub mod wdt;
+#[doc = "System timer"]
+pub struct SYS_TICK {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for SYS_TICK {}
+impl SYS_TICK {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const sys_tick::RegisterBlock = 0xe000_e010 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const sys_tick::RegisterBlock {
+        Self::PTR
+    }
+    #[doc = r" Steal an instance of this peripheral"]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Ensure that the new instance of the peripheral cannot be used in a way"]
+    #[doc = r" that may race with any existing instances, for example by only"]
+    #[doc = r" accessing read-only or write-only registers, or by consuming the"]
+    #[doc = r" original peripheral and using critical sections to coordinate"]
+    #[doc = r" access between multiple new instances."]
+    #[doc = r""]
+    #[doc = r" Additionally, other software such as HALs may rely on only one"]
+    #[doc = r" peripheral instance existing to ensure memory safety; ensure"]
+    #[doc = r" no stolen instances are passed to such software."]
+    pub unsafe fn steal() -> Self {
+        Self {
+            _marker: PhantomData,
+        }
+    }
+}
+impl Deref for SYS_TICK {
+    type Target = sys_tick::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for SYS_TICK {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("SYS_TICK").finish()
+    }
+}
+#[doc = "System timer"]
+pub mod sys_tick;
+#[doc = "System Control Registers"]
+pub struct SYSTEM_CONTROL {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for SYSTEM_CONTROL {}
+impl SYSTEM_CONTROL {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const system_control::RegisterBlock = 0xe000_e000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const system_control::RegisterBlock {
+        Self::PTR
+    }
+    #[doc = r" Steal an instance of this peripheral"]
+    #[doc = r""]
+    #[doc = r" # Safety"]
+    #[doc = r""]
+    #[doc = r" Ensure that the new instance of the peripheral cannot be used in a way"]
+    #[doc = r" that may race with any existing instances, for example by only"]
+    #[doc = r" accessing read-only or write-only registers, or by consuming the"]
+    #[doc = r" original peripheral and using critical sections to coordinate"]
+    #[doc = r" access between multiple new instances."]
+    #[doc = r""]
+    #[doc = r" Additionally, other software such as HALs may rely on only one"]
+    #[doc = r" peripheral instance existing to ensure memory safety; ensure"]
+    #[doc = r" no stolen instances are passed to such software."]
+    pub unsafe fn steal() -> Self {
+        Self {
+            _marker: PhantomData,
+        }
+    }
+}
+impl Deref for SYSTEM_CONTROL {
+    type Target = system_control::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for SYSTEM_CONTROL {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("SYSTEM_CONTROL").finish()
+    }
+}
+#[doc = "System Control Registers"]
+pub mod system_control;
 #[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r" All the peripherals."]
@@ -1564,6 +1706,8 @@ pub struct Peripherals {
     pub PM: PM,
     #[doc = "PORT"]
     pub PORT: PORT,
+    #[doc = "PORT_IOBUS"]
+    pub PORT_IOBUS: PORT_IOBUS,
     #[doc = "RTC"]
     pub RTC: RTC,
     #[doc = "SERCOM0"]
@@ -1598,6 +1742,10 @@ pub struct Peripherals {
     pub TC7: TC7,
     #[doc = "WDT"]
     pub WDT: WDT,
+    #[doc = "SYS_TICK"]
+    pub SYS_TICK: SYS_TICK,
+    #[doc = "SYSTEM_CONTROL"]
+    pub SYSTEM_CONTROL: SYSTEM_CONTROL,
 }
 impl Peripherals {
     #[doc = r" Returns all the peripherals *once*."]
@@ -1659,6 +1807,9 @@ impl Peripherals {
             PORT: PORT {
                 _marker: PhantomData,
             },
+            PORT_IOBUS: PORT_IOBUS {
+                _marker: PhantomData,
+            },
             RTC: RTC {
                 _marker: PhantomData,
             },
@@ -1708,6 +1859,12 @@ impl Peripherals {
                 _marker: PhantomData,
             },
             WDT: WDT {
+                _marker: PhantomData,
+            },
+            SYS_TICK: SYS_TICK {
+                _marker: PhantomData,
+            },
+            SYSTEM_CONTROL: SYSTEM_CONTROL {
                 _marker: PhantomData,
             },
         }

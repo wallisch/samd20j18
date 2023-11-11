@@ -1,6 +1,6 @@
-#[doc = "Register `CONFIG%s` reader"]
+#[doc = "Register `CONFIG[%s]` reader"]
 pub type R = crate::R<CONFIG_SPEC>;
-#[doc = "Register `CONFIG%s` writer"]
+#[doc = "Register `CONFIG[%s]` writer"]
 pub type W = crate::W<CONFIG_SPEC>;
 #[doc = "Field `SENSE0` reader - Input Sense 0 Configuration"]
 pub type SENSE0_R = crate::FieldReader<SENSE0SELECT_A>;
@@ -1124,7 +1124,8 @@ impl crate::Writable for CONFIG_SPEC {
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
-#[doc = "`reset()` method sets CONFIG%s to value 0"]
+#[doc = "`reset()` method sets CONFIG[%s]
+to value 0"]
 impl crate::Resettable for CONFIG_SPEC {
     const RESET_VALUE: Self::Ux = 0;
 }

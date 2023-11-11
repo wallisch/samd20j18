@@ -2,8 +2,17 @@
 pub type R = crate::R<DFLLSYNC_SPEC>;
 #[doc = "Register `DFLLSYNC` writer"]
 pub type W = crate::W<DFLLSYNC_SPEC>;
+#[doc = "Field `READREQ` reader - Read Request Synchronization"]
+pub type READREQ_R = crate::BitReader;
 #[doc = "Field `READREQ` writer - Read Request Synchronization"]
 pub type READREQ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+impl R {
+    #[doc = "Bit 7 - Read Request Synchronization"]
+    #[inline(always)]
+    pub fn readreq(&self) -> READREQ_R {
+        READREQ_R::new(((self.bits >> 7) & 1) != 0)
+    }
+}
 impl W {
     #[doc = "Bit 7 - Read Request Synchronization"]
     #[inline(always)]

@@ -1,6 +1,6 @@
-#[doc = "Register `CC%s` reader"]
+#[doc = "Register `CC[%s]` reader"]
 pub type R = crate::R<CC_SPEC>;
-#[doc = "Register `CC%s` writer"]
+#[doc = "Register `CC[%s]` writer"]
 pub type W = crate::W<CC_SPEC>;
 #[doc = "Field `CC` reader - Compare/Capture Value"]
 pub type CC_R = crate::FieldReader<u32>;
@@ -43,7 +43,8 @@ impl crate::Writable for CC_SPEC {
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
-#[doc = "`reset()` method sets CC%s to value 0"]
+#[doc = "`reset()` method sets CC[%s]
+to value 0"]
 impl crate::Resettable for CC_SPEC {
     const RESET_VALUE: Self::Ux = 0;
 }

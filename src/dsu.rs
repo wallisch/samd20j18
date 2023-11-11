@@ -22,12 +22,14 @@ pub struct RegisterBlock {
     #[doc = "0xf0..0xf8 - Device Configuration"]
     pub dcfg: [DCFG; 2],
     _reserved9: [u8; 0x0f08],
-    #[doc = "0x1000..0x1008 - Coresight ROM Table Entry n"]
-    pub entry: [ENTRY; 2],
-    #[doc = "0x1008 - Coresight ROM Table End"]
+    #[doc = "0x1000 - CoreSight ROM Table Entry 0"]
+    pub entry0: ENTRY0,
+    #[doc = "0x1004 - CoreSight ROM Table Entry 1"]
+    pub entry1: ENTRY1,
+    #[doc = "0x1008 - CoreSight ROM Table End"]
     pub end: END,
-    _reserved11: [u8; 0x0fc0],
-    #[doc = "0x1fcc - Coresight ROM Table Memory Type"]
+    _reserved12: [u8; 0x0fc0],
+    #[doc = "0x1fcc - CoreSight ROM Table Memory Type"]
     pub memtype: MEMTYPE,
     #[doc = "0x1fd0 - Peripheral Identification 4"]
     pub pid4: PID4,
@@ -99,20 +101,25 @@ module"]
 pub type DCFG = crate::Reg<dcfg::DCFG_SPEC>;
 #[doc = "Device Configuration"]
 pub mod dcfg;
-#[doc = "ENTRY (r) register accessor: Coresight ROM Table Entry n\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`entry::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@entry`]
+#[doc = "ENTRY0 (r) register accessor: CoreSight ROM Table Entry 0\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`entry0::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@entry0`]
 module"]
-pub type ENTRY = crate::Reg<entry::ENTRY_SPEC>;
-#[doc = "Coresight ROM Table Entry n"]
-pub mod entry;
-#[doc = "END (r) register accessor: Coresight ROM Table End\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`end::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@end`]
+pub type ENTRY0 = crate::Reg<entry0::ENTRY0_SPEC>;
+#[doc = "CoreSight ROM Table Entry 0"]
+pub mod entry0;
+#[doc = "ENTRY1 (r) register accessor: CoreSight ROM Table Entry 1\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`entry1::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@entry1`]
+module"]
+pub type ENTRY1 = crate::Reg<entry1::ENTRY1_SPEC>;
+#[doc = "CoreSight ROM Table Entry 1"]
+pub mod entry1;
+#[doc = "END (r) register accessor: CoreSight ROM Table End\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`end::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@end`]
 module"]
 pub type END = crate::Reg<end::END_SPEC>;
-#[doc = "Coresight ROM Table End"]
+#[doc = "CoreSight ROM Table End"]
 pub mod end;
-#[doc = "MEMTYPE (r) register accessor: Coresight ROM Table Memory Type\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`memtype::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@memtype`]
+#[doc = "MEMTYPE (r) register accessor: CoreSight ROM Table Memory Type\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`memtype::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@memtype`]
 module"]
 pub type MEMTYPE = crate::Reg<memtype::MEMTYPE_SPEC>;
-#[doc = "Coresight ROM Table Memory Type"]
+#[doc = "CoreSight ROM Table Memory Type"]
 pub mod memtype;
 #[doc = "PID4 (r) register accessor: Peripheral Identification 4\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`pid4::R`].  See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@pid4`]
 module"]

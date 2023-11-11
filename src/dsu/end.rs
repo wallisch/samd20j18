@@ -9,7 +9,7 @@ impl R {
         END_R::new(self.bits)
     }
 }
-#[doc = "Coresight ROM Table End\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`end::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "CoreSight ROM Table End\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`end::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct END_SPEC;
 impl crate::RegisterSpec for END_SPEC {
     type Ux = u32;

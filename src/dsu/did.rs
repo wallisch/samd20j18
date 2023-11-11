@@ -184,7 +184,7 @@ impl crate::RegisterSpec for DID_SPEC {
 }
 #[doc = "`read()` method returns [`did::R`](R) reader structure"]
 impl crate::Readable for DID_SPEC {}
-#[doc = "`reset()` method sets DID to value 0x1000_1300"]
+#[doc = "`reset()` method sets DID to value 0x1000_1400"]
 impl crate::Resettable for DID_SPEC {
-    const RESET_VALUE: Self::Ux = 0x1000_1300;
+    const RESET_VALUE: Self::Ux = 0x1000_1400;
 }

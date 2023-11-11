@@ -16,17 +16,17 @@ pub type MODE_R = crate::FieldReader<MODESELECT_A>;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum MODESELECT_A {
-    #[doc = "0: USART mode with external clock"]
+    #[doc = "0: USART with external clock"]
     USART_EXT_CLK = 0,
-    #[doc = "1: USART mode with internal clock"]
+    #[doc = "1: USART with internal clock"]
     USART_INT_CLK = 1,
-    #[doc = "2: SPI mode with external clock"]
+    #[doc = "2: SPI in slave operation"]
     SPI_SLAVE = 2,
-    #[doc = "3: SPI mode with internal clock"]
+    #[doc = "3: SPI in master operation"]
     SPI_MASTER = 3,
-    #[doc = "4: I2C mode with external clock"]
+    #[doc = "4: I2C slave operation"]
     I2C_SLAVE = 4,
-    #[doc = "5: I2C mode with internal clock"]
+    #[doc = "5: I2C master operation"]
     I2C_MASTER = 5,
 }
 impl From<MODESELECT_A> for u8 {
@@ -52,32 +52,32 @@ impl MODE_R {
             _ => None,
         }
     }
-    #[doc = "USART mode with external clock"]
+    #[doc = "USART with external clock"]
     #[inline(always)]
     pub fn is_usart_ext_clk(&self) -> bool {
         *self == MODESELECT_A::USART_EXT_CLK
     }
-    #[doc = "USART mode with internal clock"]
+    #[doc = "USART with internal clock"]
     #[inline(always)]
     pub fn is_usart_int_clk(&self) -> bool {
         *self == MODESELECT_A::USART_INT_CLK
     }
-    #[doc = "SPI mode with external clock"]
+    #[doc = "SPI in slave operation"]
     #[inline(always)]
     pub fn is_spi_slave(&self) -> bool {
         *self == MODESELECT_A::SPI_SLAVE
     }
-    #[doc = "SPI mode with internal clock"]
+    #[doc = "SPI in master operation"]
     #[inline(always)]
     pub fn is_spi_master(&self) -> bool {
         *self == MODESELECT_A::SPI_MASTER
     }
-    #[doc = "I2C mode with external clock"]
+    #[doc = "I2C slave operation"]
     #[inline(always)]
     pub fn is_i2c_slave(&self) -> bool {
         *self == MODESELECT_A::I2C_SLAVE
     }
-    #[doc = "I2C mode with internal clock"]
+    #[doc = "I2C master operation"]
     #[inline(always)]
     pub fn is_i2c_master(&self) -> bool {
         *self == MODESELECT_A::I2C_MASTER
@@ -90,32 +90,32 @@ where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
 {
-    #[doc = "USART mode with external clock"]
+    #[doc = "USART with external clock"]
     #[inline(always)]
     pub fn usart_ext_clk(self) -> &'a mut crate::W<REG> {
         self.variant(MODESELECT_A::USART_EXT_CLK)
     }
-    #[doc = "USART mode with internal clock"]
+    #[doc = "USART with internal clock"]
     #[inline(always)]
     pub fn usart_int_clk(self) -> &'a mut crate::W<REG> {
         self.variant(MODESELECT_A::USART_INT_CLK)
     }
-    #[doc = "SPI mode with external clock"]
+    #[doc = "SPI in slave operation"]
     #[inline(always)]
     pub fn spi_slave(self) -> &'a mut crate::W<REG> {
         self.variant(MODESELECT_A::SPI_SLAVE)
     }
-    #[doc = "SPI mode with internal clock"]
+    #[doc = "SPI in master operation"]
     #[inline(always)]
     pub fn spi_master(self) -> &'a mut crate::W<REG> {
         self.variant(MODESELECT_A::SPI_MASTER)
     }
-    #[doc = "I2C mode with external clock"]
+    #[doc = "I2C slave operation"]
     #[inline(always)]
     pub fn i2c_slave(self) -> &'a mut crate::W<REG> {
         self.variant(MODESELECT_A::I2C_SLAVE)
     }
-    #[doc = "I2C mode with internal clock"]
+    #[doc = "I2C master operation"]
     #[inline(always)]
     pub fn i2c_master(self) -> &'a mut crate::W<REG> {
         self.variant(MODESELECT_A::I2C_MASTER)
@@ -136,13 +136,13 @@ pub type SDAHOLD_R = crate::FieldReader<SDAHOLDSELECT_A>;
 #[repr(u8)]
 pub enum SDAHOLDSELECT_A {
     #[doc = "0: Disabled"]
-    DIS = 0,
-    #[doc = "1: 50-100 ns hold time"]
-    _75 = 1,
-    #[doc = "2: 300-600 ns hold time"]
-    _450 = 2,
-    #[doc = "3: 400-800 ns hold time"]
-    _600 = 3,
+    DISABLE = 0,
+    #[doc = "1: 50-100ns hold time"]
+    _75NS = 1,
+    #[doc = "2: 300-600ns hold time"]
+    _450NS = 2,
+    #[doc = "3: 400-800ns hold time"]
+    _600NS = 3,
 }
 impl From<SDAHOLDSELECT_A> for u8 {
     #[inline(always)]
@@ -158,32 +158,32 @@ impl SDAHOLD_R {
     #[inline(always)]
     pub const fn variant(&self) -> SDAHOLDSELECT_A {
         match self.bits {
-            0 => SDAHOLDSELECT_A::DIS,
-            1 => SDAHOLDSELECT_A::_75,
-            2 => SDAHOLDSELECT_A::_450,
-            3 => SDAHOLDSELECT_A::_600,
+            0 => SDAHOLDSELECT_A::DISABLE,
+            1 => SDAHOLDSELECT_A::_75NS,
+            2 => SDAHOLDSELECT_A::_450NS,
+            3 => SDAHOLDSELECT_A::_600NS,
             _ => unreachable!(),
         }
     }
     #[doc = "Disabled"]
     #[inline(always)]
-    pub fn is_dis(&self) -> bool {
-        *self == SDAHOLDSELECT_A::DIS
+    pub fn is_disable(&self) -> bool {
+        *self == SDAHOLDSELECT_A::DISABLE
     }
-    #[doc = "50-100 ns hold time"]
+    #[doc = "50-100ns hold time"]
     #[inline(always)]
-    pub fn is_75(&self) -> bool {
-        *self == SDAHOLDSELECT_A::_75
+    pub fn is_75ns(&self) -> bool {
+        *self == SDAHOLDSELECT_A::_75NS
     }
-    #[doc = "300-600 ns hold time"]
+    #[doc = "300-600ns hold time"]
     #[inline(always)]
-    pub fn is_450(&self) -> bool {
-        *self == SDAHOLDSELECT_A::_450
+    pub fn is_450ns(&self) -> bool {
+        *self == SDAHOLDSELECT_A::_450NS
     }
-    #[doc = "400-800 ns hold time"]
+    #[doc = "400-800ns hold time"]
     #[inline(always)]
-    pub fn is_600(&self) -> bool {
-        *self == SDAHOLDSELECT_A::_600
+    pub fn is_600ns(&self) -> bool {
+        *self == SDAHOLDSELECT_A::_600NS
     }
 }
 #[doc = "Field `SDAHOLD` writer - SDA Hold Time"]
@@ -195,23 +195,23 @@ where
 {
     #[doc = "Disabled"]
     #[inline(always)]
-    pub fn dis(self) -> &'a mut crate::W<REG> {
-        self.variant(SDAHOLDSELECT_A::DIS)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(SDAHOLDSELECT_A::DISABLE)
     }
-    #[doc = "50-100 ns hold time"]
+    #[doc = "50-100ns hold time"]
     #[inline(always)]
-    pub fn _75(self) -> &'a mut crate::W<REG> {
-        self.variant(SDAHOLDSELECT_A::_75)
+    pub fn _75ns(self) -> &'a mut crate::W<REG> {
+        self.variant(SDAHOLDSELECT_A::_75NS)
     }
-    #[doc = "300-600 ns hold time"]
+    #[doc = "300-600ns hold time"]
     #[inline(always)]
-    pub fn _450(self) -> &'a mut crate::W<REG> {
-        self.variant(SDAHOLDSELECT_A::_450)
+    pub fn _450ns(self) -> &'a mut crate::W<REG> {
+        self.variant(SDAHOLDSELECT_A::_450NS)
     }
-    #[doc = "400-800 ns hold time"]
+    #[doc = "400-800ns hold time"]
     #[inline(always)]
-    pub fn _600(self) -> &'a mut crate::W<REG> {
-        self.variant(SDAHOLDSELECT_A::_600)
+    pub fn _600ns(self) -> &'a mut crate::W<REG> {
+        self.variant(SDAHOLDSELECT_A::_600NS)
     }
 }
 #[doc = "Field `LOWTOUT` reader - SCL Low Time-out"]

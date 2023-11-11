@@ -4,10 +4,14 @@ pub type R = crate::R<READREQ_SPEC>;
 pub type W = crate::W<READREQ_SPEC>;
 #[doc = "Field `ADDR` reader - Address"]
 pub type ADDR_R = crate::FieldReader;
+#[doc = "Field `ADDR` writer - Address"]
+pub type ADDR_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O>;
 #[doc = "Field `RCONT` reader - Read Continuously"]
 pub type RCONT_R = crate::BitReader;
 #[doc = "Field `RCONT` writer - Read Continuously"]
 pub type RCONT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+#[doc = "Field `RREQ` reader - Read Request"]
+pub type RREQ_R = crate::BitReader;
 #[doc = "Field `RREQ` writer - Read Request"]
 pub type RREQ_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 impl R {
@@ -21,8 +25,19 @@ impl R {
     pub fn rcont(&self) -> RCONT_R {
         RCONT_R::new(((self.bits >> 14) & 1) != 0)
     }
+    #[doc = "Bit 15 - Read Request"]
+    #[inline(always)]
+    pub fn rreq(&self) -> RREQ_R {
+        RREQ_R::new(((self.bits >> 15) & 1) != 0)
+    }
 }
 impl W {
+    #[doc = "Bits 0:5 - Address"]
+    #[inline(always)]
+    #[must_use]
+    pub fn addr(&mut self) -> ADDR_W<READREQ_SPEC, 0> {
+        ADDR_W::new(self)
+    }
     #[doc = "Bit 14 - Read Continuously"]
     #[inline(always)]
     #[must_use]

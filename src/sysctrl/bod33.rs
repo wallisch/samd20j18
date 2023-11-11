@@ -11,9 +11,77 @@ pub type HYST_R = crate::BitReader;
 #[doc = "Field `HYST` writer - Hysteresis Enable"]
 pub type HYST_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `ACTION` reader - Action when Threshold Crossed"]
-pub type ACTION_R = crate::FieldReader;
+pub type ACTION_R = crate::FieldReader<ACTIONSELECT_A>;
+#[doc = "Action when Threshold Crossed\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum ACTIONSELECT_A {
+    #[doc = "0: No action"]
+    NONE = 0,
+    #[doc = "1: The BODVDD generates a reset"]
+    RESET = 1,
+    #[doc = "2: The BODVDD generates an interrupt"]
+    INT = 2,
+}
+impl From<ACTIONSELECT_A> for u8 {
+    #[inline(always)]
+    fn from(variant: ACTIONSELECT_A) -> Self {
+        variant as _
+    }
+}
+impl crate::FieldSpec for ACTIONSELECT_A {
+    type Ux = u8;
+}
+impl ACTION_R {
+    #[doc = "Get enumerated values variant"]
+    #[inline(always)]
+    pub const fn variant(&self) -> Option<ACTIONSELECT_A> {
+        match self.bits {
+            0 => Some(ACTIONSELECT_A::NONE),
+            1 => Some(ACTIONSELECT_A::RESET),
+            2 => Some(ACTIONSELECT_A::INT),
+            _ => None,
+        }
+    }
+    #[doc = "No action"]
+    #[inline(always)]
+    pub fn is_none(&self) -> bool {
+        *self == ACTIONSELECT_A::NONE
+    }
+    #[doc = "The BODVDD generates a reset"]
+    #[inline(always)]
+    pub fn is_reset(&self) -> bool {
+        *self == ACTIONSELECT_A::RESET
+    }
+    #[doc = "The BODVDD generates an interrupt"]
+    #[inline(always)]
+    pub fn is_int(&self) -> bool {
+        *self == ACTIONSELECT_A::INT
+    }
+}
 #[doc = "Field `ACTION` writer - Action when Threshold Crossed"]
-pub type ACTION_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O>;
+pub type ACTION_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O, ACTIONSELECT_A>;
+impl<'a, REG, const O: u8> ACTION_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "No action"]
+    #[inline(always)]
+    pub fn none(self) -> &'a mut crate::W<REG> {
+        self.variant(ACTIONSELECT_A::NONE)
+    }
+    #[doc = "The BODVDD generates a reset"]
+    #[inline(always)]
+    pub fn reset(self) -> &'a mut crate::W<REG> {
+        self.variant(ACTIONSELECT_A::RESET)
+    }
+    #[doc = "The BODVDD generates an interrupt"]
+    #[inline(always)]
+    pub fn int(self) -> &'a mut crate::W<REG> {
+        self.variant(ACTIONSELECT_A::INT)
+    }
+}
 #[doc = "Field `RUNSTDBY` reader - Run during Standby"]
 pub type RUNSTDBY_R = crate::BitReader;
 #[doc = "Field `RUNSTDBY` writer - Run during Standby"]
@@ -27,9 +95,246 @@ pub type CEN_R = crate::BitReader;
 #[doc = "Field `CEN` writer - Clock Enable"]
 pub type CEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `PSEL` reader - Prescaler Select"]
-pub type PSEL_R = crate::FieldReader;
+pub type PSEL_R = crate::FieldReader<PSELSELECT_A>;
+#[doc = "Prescaler Select\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum PSELSELECT_A {
+    #[doc = "0: Divide clock by 2"]
+    DIV2 = 0,
+    #[doc = "1: Divide clock by 4"]
+    DIV4 = 1,
+    #[doc = "2: Divide clock by 8"]
+    DIV8 = 2,
+    #[doc = "3: Divide clock by 16"]
+    DIV16 = 3,
+    #[doc = "4: Divide clock by 32"]
+    DIV32 = 4,
+    #[doc = "5: Divide clock by 64"]
+    DIV64 = 5,
+    #[doc = "6: Divide clock by 128"]
+    DIV128 = 6,
+    #[doc = "7: Divide clock by 256"]
+    DIV256 = 7,
+    #[doc = "8: Divide clock by 512"]
+    DIV512 = 8,
+    #[doc = "9: Divide clock by 1024"]
+    DIV1024 = 9,
+    #[doc = "10: Divide clock by 2048"]
+    DIV2048 = 10,
+    #[doc = "11: Divide clock by 4096"]
+    DIV4096 = 11,
+    #[doc = "12: Divide clock by 8192"]
+    DIV8192 = 12,
+    #[doc = "13: Divide clock by 16384"]
+    DIV16384 = 13,
+    #[doc = "14: Divide clock by 32768"]
+    DIV32768 = 14,
+    #[doc = "15: Divide clock by 65536"]
+    DIV65536 = 15,
+}
+impl From<PSELSELECT_A> for u8 {
+    #[inline(always)]
+    fn from(variant: PSELSELECT_A) -> Self {
+        variant as _
+    }
+}
+impl crate::FieldSpec for PSELSELECT_A {
+    type Ux = u8;
+}
+impl PSEL_R {
+    #[doc = "Get enumerated values variant"]
+    #[inline(always)]
+    pub const fn variant(&self) -> PSELSELECT_A {
+        match self.bits {
+            0 => PSELSELECT_A::DIV2,
+            1 => PSELSELECT_A::DIV4,
+            2 => PSELSELECT_A::DIV8,
+            3 => PSELSELECT_A::DIV16,
+            4 => PSELSELECT_A::DIV32,
+            5 => PSELSELECT_A::DIV64,
+            6 => PSELSELECT_A::DIV128,
+            7 => PSELSELECT_A::DIV256,
+            8 => PSELSELECT_A::DIV512,
+            9 => PSELSELECT_A::DIV1024,
+            10 => PSELSELECT_A::DIV2048,
+            11 => PSELSELECT_A::DIV4096,
+            12 => PSELSELECT_A::DIV8192,
+            13 => PSELSELECT_A::DIV16384,
+            14 => PSELSELECT_A::DIV32768,
+            15 => PSELSELECT_A::DIV65536,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Divide clock by 2"]
+    #[inline(always)]
+    pub fn is_div2(&self) -> bool {
+        *self == PSELSELECT_A::DIV2
+    }
+    #[doc = "Divide clock by 4"]
+    #[inline(always)]
+    pub fn is_div4(&self) -> bool {
+        *self == PSELSELECT_A::DIV4
+    }
+    #[doc = "Divide clock by 8"]
+    #[inline(always)]
+    pub fn is_div8(&self) -> bool {
+        *self == PSELSELECT_A::DIV8
+    }
+    #[doc = "Divide clock by 16"]
+    #[inline(always)]
+    pub fn is_div16(&self) -> bool {
+        *self == PSELSELECT_A::DIV16
+    }
+    #[doc = "Divide clock by 32"]
+    #[inline(always)]
+    pub fn is_div32(&self) -> bool {
+        *self == PSELSELECT_A::DIV32
+    }
+    #[doc = "Divide clock by 64"]
+    #[inline(always)]
+    pub fn is_div64(&self) -> bool {
+        *self == PSELSELECT_A::DIV64
+    }
+    #[doc = "Divide clock by 128"]
+    #[inline(always)]
+    pub fn is_div128(&self) -> bool {
+        *self == PSELSELECT_A::DIV128
+    }
+    #[doc = "Divide clock by 256"]
+    #[inline(always)]
+    pub fn is_div256(&self) -> bool {
+        *self == PSELSELECT_A::DIV256
+    }
+    #[doc = "Divide clock by 512"]
+    #[inline(always)]
+    pub fn is_div512(&self) -> bool {
+        *self == PSELSELECT_A::DIV512
+    }
+    #[doc = "Divide clock by 1024"]
+    #[inline(always)]
+    pub fn is_div1024(&self) -> bool {
+        *self == PSELSELECT_A::DIV1024
+    }
+    #[doc = "Divide clock by 2048"]
+    #[inline(always)]
+    pub fn is_div2048(&self) -> bool {
+        *self == PSELSELECT_A::DIV2048
+    }
+    #[doc = "Divide clock by 4096"]
+    #[inline(always)]
+    pub fn is_div4096(&self) -> bool {
+        *self == PSELSELECT_A::DIV4096
+    }
+    #[doc = "Divide clock by 8192"]
+    #[inline(always)]
+    pub fn is_div8192(&self) -> bool {
+        *self == PSELSELECT_A::DIV8192
+    }
+    #[doc = "Divide clock by 16384"]
+    #[inline(always)]
+    pub fn is_div16384(&self) -> bool {
+        *self == PSELSELECT_A::DIV16384
+    }
+    #[doc = "Divide clock by 32768"]
+    #[inline(always)]
+    pub fn is_div32768(&self) -> bool {
+        *self == PSELSELECT_A::DIV32768
+    }
+    #[doc = "Divide clock by 65536"]
+    #[inline(always)]
+    pub fn is_div65536(&self) -> bool {
+        *self == PSELSELECT_A::DIV65536
+    }
+}
 #[doc = "Field `PSEL` writer - Prescaler Select"]
-pub type PSEL_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 4, O>;
+pub type PSEL_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 4, O, PSELSELECT_A>;
+impl<'a, REG, const O: u8> PSEL_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Divide clock by 2"]
+    #[inline(always)]
+    pub fn div2(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV2)
+    }
+    #[doc = "Divide clock by 4"]
+    #[inline(always)]
+    pub fn div4(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV4)
+    }
+    #[doc = "Divide clock by 8"]
+    #[inline(always)]
+    pub fn div8(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV8)
+    }
+    #[doc = "Divide clock by 16"]
+    #[inline(always)]
+    pub fn div16(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV16)
+    }
+    #[doc = "Divide clock by 32"]
+    #[inline(always)]
+    pub fn div32(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV32)
+    }
+    #[doc = "Divide clock by 64"]
+    #[inline(always)]
+    pub fn div64(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV64)
+    }
+    #[doc = "Divide clock by 128"]
+    #[inline(always)]
+    pub fn div128(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV128)
+    }
+    #[doc = "Divide clock by 256"]
+    #[inline(always)]
+    pub fn div256(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV256)
+    }
+    #[doc = "Divide clock by 512"]
+    #[inline(always)]
+    pub fn div512(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV512)
+    }
+    #[doc = "Divide clock by 1024"]
+    #[inline(always)]
+    pub fn div1024(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV1024)
+    }
+    #[doc = "Divide clock by 2048"]
+    #[inline(always)]
+    pub fn div2048(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV2048)
+    }
+    #[doc = "Divide clock by 4096"]
+    #[inline(always)]
+    pub fn div4096(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV4096)
+    }
+    #[doc = "Divide clock by 8192"]
+    #[inline(always)]
+    pub fn div8192(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV8192)
+    }
+    #[doc = "Divide clock by 16384"]
+    #[inline(always)]
+    pub fn div16384(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV16384)
+    }
+    #[doc = "Divide clock by 32768"]
+    #[inline(always)]
+    pub fn div32768(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV32768)
+    }
+    #[doc = "Divide clock by 65536"]
+    #[inline(always)]
+    pub fn div65536(self) -> &'a mut crate::W<REG> {
+        self.variant(PSELSELECT_A::DIV65536)
+    }
+}
 #[doc = "Field `LEVEL` reader - Threshold Level"]
 pub type LEVEL_R = crate::FieldReader;
 #[doc = "Field `LEVEL` writer - Threshold Level"]

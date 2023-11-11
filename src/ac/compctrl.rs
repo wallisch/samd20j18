@@ -1,6 +1,6 @@
-#[doc = "Register `COMPCTRL%s` reader"]
+#[doc = "Register `COMPCTRL[%s]` reader"]
 pub type R = crate::R<COMPCTRL_SPEC>;
-#[doc = "Register `COMPCTRL%s` writer"]
+#[doc = "Register `COMPCTRL[%s]` writer"]
 pub type W = crate::W<COMPCTRL_SPEC>;
 #[doc = "Field `ENABLE` reader - Enable"]
 pub type ENABLE_R = crate::BitReader;
@@ -664,7 +664,8 @@ impl crate::Writable for COMPCTRL_SPEC {
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
-#[doc = "`reset()` method sets COMPCTRL%s to value 0"]
+#[doc = "`reset()` method sets COMPCTRL[%s]
+to value 0"]
 impl crate::Resettable for COMPCTRL_SPEC {
     const RESET_VALUE: Self::Ux = 0;
 }

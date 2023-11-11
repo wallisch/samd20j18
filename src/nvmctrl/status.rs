@@ -4,6 +4,8 @@ pub type R = crate::R<STATUS_SPEC>;
 pub type W = crate::W<STATUS_SPEC>;
 #[doc = "Field `PRM` reader - Power Reduction Mode"]
 pub type PRM_R = crate::BitReader;
+#[doc = "Field `PRM` writer - Power Reduction Mode"]
+pub type PRM_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `LOAD` reader - NVM Page Buffer Active Loading"]
 pub type LOAD_R = crate::BitReader;
 #[doc = "Field `LOAD` writer - NVM Page Buffer Active Loading"]
@@ -22,6 +24,8 @@ pub type NVME_R = crate::BitReader;
 pub type NVME_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `SB` reader - Security Bit Status"]
 pub type SB_R = crate::BitReader;
+#[doc = "Field `SB` writer - Security Bit Status"]
+pub type SB_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 impl R {
     #[doc = "Bit 0 - Power Reduction Mode"]
     #[inline(always)]
@@ -55,6 +59,12 @@ impl R {
     }
 }
 impl W {
+    #[doc = "Bit 0 - Power Reduction Mode"]
+    #[inline(always)]
+    #[must_use]
+    pub fn prm(&mut self) -> PRM_W<STATUS_SPEC, 0> {
+        PRM_W::new(self)
+    }
     #[doc = "Bit 1 - NVM Page Buffer Active Loading"]
     #[inline(always)]
     #[must_use]
@@ -78,6 +88,12 @@ impl W {
     #[must_use]
     pub fn nvme(&mut self) -> NVME_W<STATUS_SPEC, 4> {
         NVME_W::new(self)
+    }
+    #[doc = "Bit 8 - Security Bit Status"]
+    #[inline(always)]
+    #[must_use]
+    pub fn sb(&mut self) -> SB_W<STATUS_SPEC, 8> {
+        SB_W::new(self)
     }
     #[doc = r" Writes raw bits to the register."]
     #[doc = r""]

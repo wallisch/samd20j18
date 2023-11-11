@@ -1,6 +1,6 @@
-#[doc = "Register `COMP%s` reader"]
+#[doc = "Register `COMP[%s]` reader"]
 pub type R = crate::R<COMP_SPEC>;
-#[doc = "Register `COMP%s` writer"]
+#[doc = "Register `COMP[%s]` writer"]
 pub type W = crate::W<COMP_SPEC>;
 #[doc = "Field `COMP` reader - Compare Value"]
 pub type COMP_R = crate::FieldReader<u16>;
@@ -43,7 +43,8 @@ impl crate::Writable for COMP_SPEC {
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
-#[doc = "`reset()` method sets COMP%s to value 0"]
+#[doc = "`reset()` method sets COMP[%s]
+to value 0"]
 impl crate::Resettable for COMP_SPEC {
     const RESET_VALUE: Self::Ux = 0;
 }

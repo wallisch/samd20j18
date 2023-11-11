@@ -1,6 +1,6 @@
-#[doc = "Register `DCFG%s` reader"]
+#[doc = "Register `DCFG[%s]` reader"]
 pub type R = crate::R<DCFG_SPEC>;
-#[doc = "Register `DCFG%s` writer"]
+#[doc = "Register `DCFG[%s]` writer"]
 pub type W = crate::W<DCFG_SPEC>;
 #[doc = "Field `DCFG` reader - Device Configuration"]
 pub type DCFG_R = crate::FieldReader<u32>;
@@ -43,7 +43,8 @@ impl crate::Writable for DCFG_SPEC {
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
-#[doc = "`reset()` method sets DCFG%s to value 0"]
+#[doc = "`reset()` method sets DCFG[%s]
+to value 0"]
 impl crate::Resettable for DCFG_SPEC {
     const RESET_VALUE: Self::Ux = 0;
 }

@@ -12,6 +12,8 @@ pub type ARBLOST_R = crate::BitReader;
 pub type ARBLOST_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `RXNACK` reader - Received Not Acknowledge"]
 pub type RXNACK_R = crate::BitReader;
+#[doc = "Field `RXNACK` writer - Received Not Acknowledge"]
+pub type RXNACK_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `BUSSTATE` reader - Bus State"]
 pub type BUSSTATE_R = crate::FieldReader;
 #[doc = "Field `BUSSTATE` writer - Bus State"]
@@ -26,6 +28,8 @@ pub type CLKHOLD_R = crate::BitReader;
 pub type CLKHOLD_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `SYNCBUSY` reader - Synchronization Busy"]
 pub type SYNCBUSY_R = crate::BitReader;
+#[doc = "Field `SYNCBUSY` writer - Synchronization Busy"]
+pub type SYNCBUSY_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 impl R {
     #[doc = "Bit 0 - Bus Error"]
     #[inline(always)]
@@ -76,6 +80,12 @@ impl W {
     pub fn arblost(&mut self) -> ARBLOST_W<STATUS_SPEC, 1> {
         ARBLOST_W::new(self)
     }
+    #[doc = "Bit 2 - Received Not Acknowledge"]
+    #[inline(always)]
+    #[must_use]
+    pub fn rxnack(&mut self) -> RXNACK_W<STATUS_SPEC, 2> {
+        RXNACK_W::new(self)
+    }
     #[doc = "Bits 4:5 - Bus State"]
     #[inline(always)]
     #[must_use]
@@ -93,6 +103,12 @@ impl W {
     #[must_use]
     pub fn clkhold(&mut self) -> CLKHOLD_W<STATUS_SPEC, 7> {
         CLKHOLD_W::new(self)
+    }
+    #[doc = "Bit 15 - Synchronization Busy"]
+    #[inline(always)]
+    #[must_use]
+    pub fn syncbusy(&mut self) -> SYNCBUSY_W<STATUS_SPEC, 15> {
+        SYNCBUSY_W::new(self)
     }
     #[doc = r" Writes raw bits to the register."]
     #[doc = r""]

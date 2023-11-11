@@ -1,17 +1,27 @@
 #[doc = r"Register block"]
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved_0_spi: [u8; 0x1a],
+    _reserved_0_i2cm: [u8; 0x1a],
 }
 impl RegisterBlock {
-    #[doc = "0x00..0x1a - USART Mode"]
+    #[doc = "0x00..0x1a - USART INTERNAL CLOCK Mode"]
     #[inline(always)]
-    pub const fn usart(&self) -> &USART {
+    pub const fn usart_int(&self) -> &USART_INT {
         unsafe { &*(self as *const Self).cast::<u8>().add(0usize).cast() }
     }
-    #[doc = "0x00..0x1a - SPI Mode"]
+    #[doc = "0x00..0x1a - USART EXTERNAL CLOCK Mode"]
     #[inline(always)]
-    pub const fn spi(&self) -> &SPI {
+    pub const fn usart_ext(&self) -> &USART_EXT {
+        unsafe { &*(self as *const Self).cast::<u8>().add(0usize).cast() }
+    }
+    #[doc = "0x00..0x1a - SPI Master Mode"]
+    #[inline(always)]
+    pub const fn spim(&self) -> &SPIM {
+        unsafe { &*(self as *const Self).cast::<u8>().add(0usize).cast() }
+    }
+    #[doc = "0x00..0x1a - SPI Slave Mode"]
+    #[inline(always)]
+    pub const fn spis(&self) -> &SPIS {
         unsafe { &*(self as *const Self).cast::<u8>().add(0usize).cast() }
     }
     #[doc = "0x00..0x19 - I2C Slave Mode"]
@@ -35,13 +45,23 @@ pub use self::i2cs::I2CS;
 #[doc = r"Cluster"]
 #[doc = "I2C Slave Mode"]
 pub mod i2cs;
-#[doc = "SPI Mode"]
-pub use self::spi::SPI;
+#[doc = "SPI Slave Mode"]
+pub use self::spis::SPIS;
 #[doc = r"Cluster"]
-#[doc = "SPI Mode"]
-pub mod spi;
-#[doc = "USART Mode"]
-pub use self::usart::USART;
+#[doc = "SPI Slave Mode"]
+pub mod spis;
+#[doc = "SPI Master Mode"]
+pub use self::spim::SPIM;
 #[doc = r"Cluster"]
-#[doc = "USART Mode"]
-pub mod usart;
+#[doc = "SPI Master Mode"]
+pub mod spim;
+#[doc = "USART EXTERNAL CLOCK Mode"]
+pub use self::usart_ext::USART_EXT;
+#[doc = r"Cluster"]
+#[doc = "USART EXTERNAL CLOCK Mode"]
+pub mod usart_ext;
+#[doc = "USART INTERNAL CLOCK Mode"]
+pub use self::usart_int::USART_INT;
+#[doc = r"Cluster"]
+#[doc = "USART INTERNAL CLOCK Mode"]
+pub mod usart_int;

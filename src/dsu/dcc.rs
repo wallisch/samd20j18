@@ -1,6 +1,6 @@
-#[doc = "Register `DCC%s` reader"]
+#[doc = "Register `DCC[%s]` reader"]
 pub type R = crate::R<DCC_SPEC>;
-#[doc = "Register `DCC%s` writer"]
+#[doc = "Register `DCC[%s]` writer"]
 pub type W = crate::W<DCC_SPEC>;
 #[doc = "Field `DATA` reader - Data"]
 pub type DATA_R = crate::FieldReader<u32>;
@@ -43,7 +43,8 @@ impl crate::Writable for DCC_SPEC {
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
-#[doc = "`reset()` method sets DCC%s to value 0"]
+#[doc = "`reset()` method sets DCC[%s]
+to value 0"]
 impl crate::Resettable for DCC_SPEC {
     const RESET_VALUE: Self::Ux = 0;
 }

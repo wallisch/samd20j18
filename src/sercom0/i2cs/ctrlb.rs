@@ -10,6 +10,8 @@ pub type SMEN_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 pub type AMODE_R = crate::FieldReader;
 #[doc = "Field `AMODE` writer - Address Mode"]
 pub type AMODE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O>;
+#[doc = "Field `CMD` reader - Command"]
+pub type CMD_R = crate::FieldReader;
 #[doc = "Field `CMD` writer - Command"]
 pub type CMD_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 2, O>;
 #[doc = "Field `ACKACT` reader - Acknowledge Action"]
@@ -26,6 +28,11 @@ impl R {
     #[inline(always)]
     pub fn amode(&self) -> AMODE_R {
         AMODE_R::new(((self.bits >> 14) & 3) as u8)
+    }
+    #[doc = "Bits 16:17 - Command"]
+    #[inline(always)]
+    pub fn cmd(&self) -> CMD_R {
+        CMD_R::new(((self.bits >> 16) & 3) as u8)
     }
     #[doc = "Bit 18 - Acknowledge Action"]
     #[inline(always)]

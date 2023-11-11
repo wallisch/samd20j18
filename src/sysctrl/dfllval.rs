@@ -12,6 +12,8 @@ pub type COARSE_R = crate::FieldReader;
 pub type COARSE_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 6, O>;
 #[doc = "Field `DIFF` reader - Multiplication Ratio Difference"]
 pub type DIFF_R = crate::FieldReader<u16>;
+#[doc = "Field `DIFF` writer - Multiplication Ratio Difference"]
+pub type DIFF_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
 impl R {
     #[doc = "Bits 0:9 - Fine Calibration Value"]
     #[inline(always)]
@@ -41,6 +43,12 @@ impl W {
     #[must_use]
     pub fn coarse(&mut self) -> COARSE_W<DFLLVAL_SPEC, 10> {
         COARSE_W::new(self)
+    }
+    #[doc = "Bits 16:31 - Multiplication Ratio Difference"]
+    #[inline(always)]
+    #[must_use]
+    pub fn diff(&mut self) -> DIFF_W<DFLLVAL_SPEC, 16> {
+        DIFF_W::new(self)
     }
     #[doc = r" Writes raw bits to the register."]
     #[doc = r""]

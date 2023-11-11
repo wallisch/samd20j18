@@ -26,7 +26,7 @@ pub type RESSEL_R = crate::FieldReader<RESSELSELECT_A>;
 pub enum RESSELSELECT_A {
     #[doc = "0: 12-bit result"]
     _12BIT = 0,
-    #[doc = "1: For averaging mode output"]
+    #[doc = "1: 16-bit averaging mode"]
     _16BIT = 1,
     #[doc = "2: 10-bit result"]
     _10BIT = 2,
@@ -59,7 +59,7 @@ impl RESSEL_R {
     pub fn is_12bit(&self) -> bool {
         *self == RESSELSELECT_A::_12BIT
     }
-    #[doc = "For averaging mode output"]
+    #[doc = "16-bit averaging mode"]
     #[inline(always)]
     pub fn is_16bit(&self) -> bool {
         *self == RESSELSELECT_A::_16BIT
@@ -87,7 +87,7 @@ where
     pub fn _12bit(self) -> &'a mut crate::W<REG> {
         self.variant(RESSELSELECT_A::_12BIT)
     }
-    #[doc = "For averaging mode output"]
+    #[doc = "16-bit averaging mode"]
     #[inline(always)]
     pub fn _16bit(self) -> &'a mut crate::W<REG> {
         self.variant(RESSELSELECT_A::_16BIT)

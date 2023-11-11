@@ -14,9 +14,9 @@ pub enum REFSELSELECT_A {
     INTVCC0 = 1,
     #[doc = "2: 1/2 VDDANA (only for VDDANA > 2.0V)"]
     INTVCC1 = 2,
-    #[doc = "3: External reference"]
+    #[doc = "3: External reference A"]
     AREFA = 3,
-    #[doc = "4: External reference"]
+    #[doc = "4: External reference B"]
     AREFB = 4,
 }
 impl From<REFSELSELECT_A> for u8 {
@@ -56,12 +56,12 @@ impl REFSEL_R {
     pub fn is_intvcc1(&self) -> bool {
         *self == REFSELSELECT_A::INTVCC1
     }
-    #[doc = "External reference"]
+    #[doc = "External reference A"]
     #[inline(always)]
     pub fn is_arefa(&self) -> bool {
         *self == REFSELSELECT_A::AREFA
     }
-    #[doc = "External reference"]
+    #[doc = "External reference B"]
     #[inline(always)]
     pub fn is_arefb(&self) -> bool {
         *self == REFSELSELECT_A::AREFB
@@ -89,12 +89,12 @@ where
     pub fn intvcc1(self) -> &'a mut crate::W<REG> {
         self.variant(REFSELSELECT_A::INTVCC1)
     }
-    #[doc = "External reference"]
+    #[doc = "External reference A"]
     #[inline(always)]
     pub fn arefa(self) -> &'a mut crate::W<REG> {
         self.variant(REFSELSELECT_A::AREFA)
     }
-    #[doc = "External reference"]
+    #[doc = "External reference B"]
     #[inline(always)]
     pub fn arefb(self) -> &'a mut crate::W<REG> {
         self.variant(REFSELSELECT_A::AREFB)

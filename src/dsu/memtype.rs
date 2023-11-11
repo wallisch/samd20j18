@@ -9,7 +9,7 @@ impl R {
         SMEMP_R::new((self.bits & 1) != 0)
     }
 }
-#[doc = "Coresight ROM Table Memory Type\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`memtype::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "CoreSight ROM Table Memory Type\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`memtype::R`](R).  See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct MEMTYPE_SPEC;
 impl crate::RegisterSpec for MEMTYPE_SPEC {
     type Ux = u32;

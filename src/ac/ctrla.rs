@@ -2,6 +2,8 @@
 pub type R = crate::R<CTRLA_SPEC>;
 #[doc = "Register `CTRLA` writer"]
 pub type W = crate::W<CTRLA_SPEC>;
+#[doc = "Field `SWRST` reader - Software Reset"]
+pub type SWRST_R = crate::BitReader;
 #[doc = "Field `SWRST` writer - Software Reset"]
 pub type SWRST_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `ENABLE` reader - Enable"]
@@ -17,6 +19,11 @@ pub type LPMUX_R = crate::BitReader;
 #[doc = "Field `LPMUX` writer - Low-Power Mux"]
 pub type LPMUX_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 impl R {
+    #[doc = "Bit 0 - Software Reset"]
+    #[inline(always)]
+    pub fn swrst(&self) -> SWRST_R {
+        SWRST_R::new((self.bits & 1) != 0)
+    }
     #[doc = "Bit 1 - Enable"]
     #[inline(always)]
     pub fn enable(&self) -> ENABLE_R {

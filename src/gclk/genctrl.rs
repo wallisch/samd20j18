@@ -293,9 +293,58 @@ pub type OE_R = crate::BitReader;
 #[doc = "Field `OE` writer - Output Enable"]
 pub type OE_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `DIVSEL` reader - Divide Selection"]
-pub type DIVSEL_R = crate::BitReader;
+pub type DIVSEL_R = crate::BitReader<DIVSELSELECT_A>;
+#[doc = "Divide Selection\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DIVSELSELECT_A {
+    #[doc = "0: Divide input directly by divider factor"]
+    DIV1 = 0,
+    #[doc = "1: Divide input by 2^(divider factor+ 1)"]
+    DIV2 = 1,
+}
+impl From<DIVSELSELECT_A> for bool {
+    #[inline(always)]
+    fn from(variant: DIVSELSELECT_A) -> Self {
+        variant as u8 != 0
+    }
+}
+impl DIVSEL_R {
+    #[doc = "Get enumerated values variant"]
+    #[inline(always)]
+    pub const fn variant(&self) -> DIVSELSELECT_A {
+        match self.bits {
+            false => DIVSELSELECT_A::DIV1,
+            true => DIVSELSELECT_A::DIV2,
+        }
+    }
+    #[doc = "Divide input directly by divider factor"]
+    #[inline(always)]
+    pub fn is_div1(&self) -> bool {
+        *self == DIVSELSELECT_A::DIV1
+    }
+    #[doc = "Divide input by 2^(divider factor+ 1)"]
+    #[inline(always)]
+    pub fn is_div2(&self) -> bool {
+        *self == DIVSELSELECT_A::DIV2
+    }
+}
 #[doc = "Field `DIVSEL` writer - Divide Selection"]
-pub type DIVSEL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
+pub type DIVSEL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O, DIVSELSELECT_A>;
+impl<'a, REG, const O: u8> DIVSEL_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Divide input directly by divider factor"]
+    #[inline(always)]
+    pub fn div1(self) -> &'a mut crate::W<REG> {
+        self.variant(DIVSELSELECT_A::DIV1)
+    }
+    #[doc = "Divide input by 2^(divider factor+ 1)"]
+    #[inline(always)]
+    pub fn div2(self) -> &'a mut crate::W<REG> {
+        self.variant(DIVSELSELECT_A::DIV2)
+    }
+}
 #[doc = "Field `RUNSTDBY` reader - Run in Standby"]
 pub type RUNSTDBY_R = crate::BitReader;
 #[doc = "Field `RUNSTDBY` writer - Run in Standby"]

@@ -4,6 +4,8 @@ pub type R = crate::R<LOCK_SPEC>;
 pub type W = crate::W<LOCK_SPEC>;
 #[doc = "Field `LOCK` reader - Region Lock Bits"]
 pub type LOCK_R = crate::FieldReader<u16>;
+#[doc = "Field `LOCK` writer - Region Lock Bits"]
+pub type LOCK_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
 impl R {
     #[doc = "Bits 0:15 - Region Lock Bits"]
     #[inline(always)]
@@ -12,6 +14,12 @@ impl R {
     }
 }
 impl W {
+    #[doc = "Bits 0:15 - Region Lock Bits"]
+    #[inline(always)]
+    #[must_use]
+    pub fn lock(&mut self) -> LOCK_W<LOCK_SPEC, 0> {
+        LOCK_W::new(self)
+    }
     #[doc = r" Writes raw bits to the register."]
     #[doc = r""]
     #[doc = r" # Safety"]

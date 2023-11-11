@@ -16,7 +16,9 @@ pub type HOUR_R = crate::FieldReader<HOURSELECT_A>;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum HOURSELECT_A {
-    #[doc = "16: Afternoon Hour"]
+    #[doc = "0: AM when CLKREP in 12-hour"]
+    AM = 0,
+    #[doc = "16: PM when CLKREP in 12-hour"]
     PM = 16,
 }
 impl From<HOURSELECT_A> for u8 {
@@ -33,11 +35,17 @@ impl HOUR_R {
     #[inline(always)]
     pub const fn variant(&self) -> Option<HOURSELECT_A> {
         match self.bits {
+            0 => Some(HOURSELECT_A::AM),
             16 => Some(HOURSELECT_A::PM),
             _ => None,
         }
     }
-    #[doc = "Afternoon Hour"]
+    #[doc = "AM when CLKREP in 12-hour"]
+    #[inline(always)]
+    pub fn is_am(&self) -> bool {
+        *self == HOURSELECT_A::AM
+    }
+    #[doc = "PM when CLKREP in 12-hour"]
     #[inline(always)]
     pub fn is_pm(&self) -> bool {
         *self == HOURSELECT_A::PM
@@ -50,7 +58,12 @@ where
     REG: crate::Writable + crate::RegisterSpec,
     REG::Ux: From<u8>,
 {
-    #[doc = "Afternoon Hour"]
+    #[doc = "AM when CLKREP in 12-hour"]
+    #[inline(always)]
+    pub fn am(self) -> &'a mut crate::W<REG> {
+        self.variant(HOURSELECT_A::AM)
+    }
+    #[doc = "PM when CLKREP in 12-hour"]
     #[inline(always)]
     pub fn pm(self) -> &'a mut crate::W<REG> {
         self.variant(HOURSELECT_A::PM)

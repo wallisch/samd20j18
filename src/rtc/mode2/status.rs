@@ -4,6 +4,8 @@ pub type R = crate::R<STATUS_SPEC>;
 pub type W = crate::W<STATUS_SPEC>;
 #[doc = "Field `SYNCBUSY` reader - Synchronization Busy"]
 pub type SYNCBUSY_R = crate::BitReader;
+#[doc = "Field `SYNCBUSY` writer - Synchronization Busy"]
+pub type SYNCBUSY_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 impl R {
     #[doc = "Bit 7 - Synchronization Busy"]
     #[inline(always)]
@@ -12,6 +14,12 @@ impl R {
     }
 }
 impl W {
+    #[doc = "Bit 7 - Synchronization Busy"]
+    #[inline(always)]
+    #[must_use]
+    pub fn syncbusy(&mut self) -> SYNCBUSY_W<STATUS_SPEC, 7> {
+        SYNCBUSY_W::new(self)
+    }
     #[doc = r" Writes raw bits to the register."]
     #[doc = r""]
     #[doc = r" # Safety"]

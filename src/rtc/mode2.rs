@@ -24,10 +24,10 @@ pub struct MODE2 {
     #[doc = "0x10 - MODE2 Clock Value"]
     pub clock: CLOCK,
     _reserved10: [u8; 0x04],
-    #[doc = "0x18 - MODE2 Alarm n Value"]
-    pub alarm: [ALARM; 1],
-    #[doc = "0x1c - MODE2 Alarm n Mask"]
-    pub mask: [MASK; 1],
+    #[doc = "0x18 - MODE2_ALARM Alarm n Value"]
+    pub alarm: ALARM,
+    #[doc = "0x1c - MODE2_ALARM Alarm n Mask"]
+    pub mask: MASK,
 }
 #[doc = "CTRL (rw) register accessor: MODE2 Control\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`ctrl::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`ctrl::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ctrl`]
 module"]
@@ -79,13 +79,13 @@ module"]
 pub type CLOCK = crate::Reg<clock::CLOCK_SPEC>;
 #[doc = "MODE2 Clock Value"]
 pub mod clock;
-#[doc = "ALARM (rw) register accessor: MODE2 Alarm n Value\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`alarm::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`alarm::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@alarm`]
+#[doc = "ALARM (rw) register accessor: MODE2_ALARM Alarm n Value\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`alarm::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`alarm::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@alarm`]
 module"]
 pub type ALARM = crate::Reg<alarm::ALARM_SPEC>;
-#[doc = "MODE2 Alarm n Value"]
+#[doc = "MODE2_ALARM Alarm n Value"]
 pub mod alarm;
-#[doc = "MASK (rw) register accessor: MODE2 Alarm n Mask\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mask::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mask::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@mask`]
+#[doc = "MASK (rw) register accessor: MODE2_ALARM Alarm n Mask\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mask::R`].  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mask::W`]. You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@mask`]
 module"]
 pub type MASK = crate::Reg<mask::MASK_SPEC>;
-#[doc = "MODE2 Alarm n Mask"]
+#[doc = "MODE2_ALARM Alarm n Mask"]
 pub mod mask;

@@ -4,6 +4,8 @@ pub type R = crate::R<PARAM_SPEC>;
 pub type W = crate::W<PARAM_SPEC>;
 #[doc = "Field `NVMP` reader - NVM Pages"]
 pub type NVMP_R = crate::FieldReader<u16>;
+#[doc = "Field `NVMP` writer - NVM Pages"]
+pub type NVMP_W<'a, REG, const O: u8> = crate::FieldWriter<'a, REG, 16, O, u16>;
 #[doc = "Field `PSZ` reader - Page Size"]
 pub type PSZ_R = crate::FieldReader<PSZSELECT_A>;
 #[doc = "Page Size\n\nValue on reset: 0"]
@@ -93,6 +95,54 @@ impl PSZ_R {
         *self == PSZSELECT_A::_1024
     }
 }
+#[doc = "Field `PSZ` writer - Page Size"]
+pub type PSZ_W<'a, REG, const O: u8> = crate::FieldWriterSafe<'a, REG, 3, O, PSZSELECT_A>;
+impl<'a, REG, const O: u8> PSZ_W<'a, REG, O>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "8 bytes"]
+    #[inline(always)]
+    pub fn _8(self) -> &'a mut crate::W<REG> {
+        self.variant(PSZSELECT_A::_8)
+    }
+    #[doc = "16 bytes"]
+    #[inline(always)]
+    pub fn _16(self) -> &'a mut crate::W<REG> {
+        self.variant(PSZSELECT_A::_16)
+    }
+    #[doc = "32 bytes"]
+    #[inline(always)]
+    pub fn _32(self) -> &'a mut crate::W<REG> {
+        self.variant(PSZSELECT_A::_32)
+    }
+    #[doc = "64 bytes"]
+    #[inline(always)]
+    pub fn _64(self) -> &'a mut crate::W<REG> {
+        self.variant(PSZSELECT_A::_64)
+    }
+    #[doc = "128 bytes"]
+    #[inline(always)]
+    pub fn _128(self) -> &'a mut crate::W<REG> {
+        self.variant(PSZSELECT_A::_128)
+    }
+    #[doc = "256 bytes"]
+    #[inline(always)]
+    pub fn _256(self) -> &'a mut crate::W<REG> {
+        self.variant(PSZSELECT_A::_256)
+    }
+    #[doc = "512 bytes"]
+    #[inline(always)]
+    pub fn _512(self) -> &'a mut crate::W<REG> {
+        self.variant(PSZSELECT_A::_512)
+    }
+    #[doc = "1024 bytes"]
+    #[inline(always)]
+    pub fn _1024(self) -> &'a mut crate::W<REG> {
+        self.variant(PSZSELECT_A::_1024)
+    }
+}
 impl R {
     #[doc = "Bits 0:15 - NVM Pages"]
     #[inline(always)]
@@ -106,6 +156,18 @@ impl R {
     }
 }
 impl W {
+    #[doc = "Bits 0:15 - NVM Pages"]
+    #[inline(always)]
+    #[must_use]
+    pub fn nvmp(&mut self) -> NVMP_W<PARAM_SPEC, 0> {
+        NVMP_W::new(self)
+    }
+    #[doc = "Bits 16:18 - Page Size"]
+    #[inline(always)]
+    #[must_use]
+    pub fn psz(&mut self) -> PSZ_W<PARAM_SPEC, 16> {
+        PSZ_W::new(self)
+    }
     #[doc = r" Writes raw bits to the register."]
     #[doc = r""]
     #[doc = r" # Safety"]

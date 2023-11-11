@@ -12,18 +12,28 @@ pub type COLL_R = crate::BitReader;
 pub type COLL_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `RXNACK` reader - Received Not Acknowledge"]
 pub type RXNACK_R = crate::BitReader;
+#[doc = "Field `RXNACK` writer - Received Not Acknowledge"]
+pub type RXNACK_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `DIR` reader - Read / Write Direction"]
 pub type DIR_R = crate::BitReader;
+#[doc = "Field `DIR` writer - Read / Write Direction"]
+pub type DIR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `SR` reader - Repeated Start"]
 pub type SR_R = crate::BitReader;
+#[doc = "Field `SR` writer - Repeated Start"]
+pub type SR_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `LOWTOUT` reader - SCL Low Time-out"]
 pub type LOWTOUT_R = crate::BitReader;
 #[doc = "Field `LOWTOUT` writer - SCL Low Time-out"]
 pub type LOWTOUT_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `CLKHOLD` reader - Clock Hold"]
 pub type CLKHOLD_R = crate::BitReader;
+#[doc = "Field `CLKHOLD` writer - Clock Hold"]
+pub type CLKHOLD_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 #[doc = "Field `SYNCBUSY` reader - Synchronization Busy"]
 pub type SYNCBUSY_R = crate::BitReader;
+#[doc = "Field `SYNCBUSY` writer - Synchronization Busy"]
+pub type SYNCBUSY_W<'a, REG, const O: u8> = crate::BitWriter<'a, REG, O>;
 impl R {
     #[doc = "Bit 0 - Bus Error"]
     #[inline(always)]
@@ -79,11 +89,41 @@ impl W {
     pub fn coll(&mut self) -> COLL_W<STATUS_SPEC, 1> {
         COLL_W::new(self)
     }
+    #[doc = "Bit 2 - Received Not Acknowledge"]
+    #[inline(always)]
+    #[must_use]
+    pub fn rxnack(&mut self) -> RXNACK_W<STATUS_SPEC, 2> {
+        RXNACK_W::new(self)
+    }
+    #[doc = "Bit 3 - Read / Write Direction"]
+    #[inline(always)]
+    #[must_use]
+    pub fn dir(&mut self) -> DIR_W<STATUS_SPEC, 3> {
+        DIR_W::new(self)
+    }
+    #[doc = "Bit 4 - Repeated Start"]
+    #[inline(always)]
+    #[must_use]
+    pub fn sr(&mut self) -> SR_W<STATUS_SPEC, 4> {
+        SR_W::new(self)
+    }
     #[doc = "Bit 6 - SCL Low Time-out"]
     #[inline(always)]
     #[must_use]
     pub fn lowtout(&mut self) -> LOWTOUT_W<STATUS_SPEC, 6> {
         LOWTOUT_W::new(self)
+    }
+    #[doc = "Bit 7 - Clock Hold"]
+    #[inline(always)]
+    #[must_use]
+    pub fn clkhold(&mut self) -> CLKHOLD_W<STATUS_SPEC, 7> {
+        CLKHOLD_W::new(self)
+    }
+    #[doc = "Bit 15 - Synchronization Busy"]
+    #[inline(always)]
+    #[must_use]
+    pub fn syncbusy(&mut self) -> SYNCBUSY_W<STATUS_SPEC, 15> {
+        SYNCBUSY_W::new(self)
     }
     #[doc = r" Writes raw bits to the register."]
     #[doc = r""]

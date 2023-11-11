@@ -1,6 +1,6 @@
-#[doc = "Register `MASK%s` reader"]
+#[doc = "Register `MASK` reader"]
 pub type R = crate::R<MASK_SPEC>;
-#[doc = "Register `MASK%s` writer"]
+#[doc = "Register `MASK` writer"]
 pub type W = crate::W<MASK_SPEC>;
 #[doc = "Field `SEL` reader - Alarm Mask Selection"]
 pub type SEL_R = crate::FieldReader<SELSELECT_A>;
@@ -151,7 +151,7 @@ impl W {
         self
     }
 }
-#[doc = "MODE2 Alarm n Mask\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mask::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mask::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "MODE2_ALARM Alarm n Mask\n\nYou can [`read`](crate::generic::Reg::read) this register and get [`mask::R`](R).  You can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero) this register using [`mask::W`](W). You can also [`modify`](crate::generic::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct MASK_SPEC;
 impl crate::RegisterSpec for MASK_SPEC {
     type Ux = u8;
@@ -163,7 +163,7 @@ impl crate::Writable for MASK_SPEC {
     const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
     const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
-#[doc = "`reset()` method sets MASK%s to value 0"]
+#[doc = "`reset()` method sets MASK to value 0"]
 impl crate::Resettable for MASK_SPEC {
     const RESET_VALUE: Self::Ux = 0;
 }
